@@ -7,32 +7,32 @@ public class Car {
     private String productionCountry;
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
-        if (brand == null || brand == ""){
+        if (isEmptyString(brand)){
             this.brand = "default";
         } else {
             this.brand = brand;
         }
-        if (model == null || model == ""){
+        if (isEmptyString(model)){
             this.model = "default";
         } else {
             this.model = model;
         }
-        if (engineVolume <= 0){
+        if (isNotPositiveNumber(engineVolume)){
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
         }
-        if (color == null || color == ""){
+        if (isEmptyString(color)){
             this.color = "белый";
         } else {
             this.color = color;
         }
-        if (productionYear <= 0){
+        if (isNotPositiveNumber(productionYear)){
             this.productionYear = 2000;
         } else {
             this.productionYear = productionYear;
         }
-        if (productionCountry == null || productionCountry == ""){
+        if (isEmptyString(productionCountry)){
             this.productionCountry = "default";
         } else {
             this.productionCountry = productionCountry;
@@ -67,5 +67,18 @@ public class Car {
     public String toString() {
         return brand + ' ' + model + ", страна сборки - " + productionCountry +
                 ", год выпуска - " + productionYear + ", цвет кузова - " + color + ", объем двигателя - " + engineVolume + " л.";
+    }
+
+    public static boolean isEmptyString(String str){
+        if (str == null || str == ""){
+            return true;
+        }
+        return false;
+    }
+    public static boolean isNotPositiveNumber(double number) {
+        if (number <= 0){
+            return true;
+        }
+        return false;
     }
 }
