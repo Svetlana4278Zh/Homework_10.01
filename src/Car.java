@@ -6,37 +6,18 @@ public class Car {
     private int productionYear;
     private String productionCountry;
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
-        if (isEmptyString(brand)){
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (isEmptyString(model)){
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        if (isNotPositiveNumber(engineVolume)){
-            this.engineVolume = 1.5;
-        } else {
-            this.engineVolume = engineVolume;
-        }
-        if (isEmptyString(color)){
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
-        if (isNotPositiveNumber(productionYear)){
-            this.productionYear = 2000;
-        } else {
-            this.productionYear = productionYear;
-        }
-        if (isEmptyString(productionCountry)){
-            this.productionCountry = "default";
-        } else {
-            this.productionCountry = productionCountry;
-        }
+    public Car(String brand,
+               String model,
+               double engineVolume,
+               String color,
+               int productionYear,
+               String productionCountry) {
+        this.brand = validateCarParameters(brand);
+        this.model = validateCarParameters(model);
+        this.engineVolume = validateCarEngineVolume(engineVolume);
+        this.color = validateCarColor(color);
+        this.productionYear = validateCarProductionYear(productionYear);
+        this.productionCountry = validateCarParameters(productionCountry);
     }
 
     public String getBrand() {
@@ -69,16 +50,20 @@ public class Car {
                 ", год выпуска - " + productionYear + ", цвет кузова - " + color + ", объем двигателя - " + engineVolume + " л.";
     }
 
-    public static boolean isEmptyString(String str){
-        if (str == null || str == ""){
-            return true;
-        }
-        return false;
+    public static String validateCarParameters(String value){
+        if (value == null || value.isBlank()) {return "default";}
+        return value;
     }
-    public static boolean isNotPositiveNumber(double number) {
-        if (number <= 0){
-            return true;
-        }
-        return false;
+    public static String validateCarColor(String value) {
+        if (value == null || value.isBlank()) {return "белый";}
+        return value;
+    }
+    public static double validateCarEngineVolume(double value) {
+        if (value <= 0){return 1.5;}
+        return value;
+    }
+    public static int validateCarProductionYear(int value) {
+        if (value <= 0){return 2000;}
+        return value;
     }
 }
