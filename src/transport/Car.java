@@ -12,6 +12,7 @@ public class Car {
     private String registrationNumber;
     private final int numberOfSeats;
     private boolean isSummerTires;
+    private final Key key;
 
     public Car(String brand,
                String model,
@@ -23,18 +24,20 @@ public class Car {
                String bodyType,
                String registrationNumber,
                int numberOfSeats,
-               boolean isSummerTires) {
+               boolean isSummerTires,
+               Key key) {
         this.brand = validateCarParameters(brand);
         this.model = validateCarParameters(model);
         this.engineVolume = validateCarEngineVolume(engineVolume);
         this.color = validateCarColor(color);
         this.productionYear = validateCarProductionYear(productionYear);
         this.productionCountry = validateCarParameters(productionCountry);
-        this.transmission = validateCarParameters(transmission);
-        this.bodyType = validateCarParameters(bodyType);
+        this.transmission = validateCarTransmission(transmission);
+        this.bodyType = validateCarBodyType(bodyType);
         this.registrationNumber = validateCarRegistrationNumber(registrationNumber);
         this.numberOfSeats = validateCarNumberOfSeats(numberOfSeats);
         this.isSummerTires = isSummerTires;
+        this.key = key;
     }
 
     public String getBrand() {
@@ -77,8 +80,11 @@ public class Car {
         return numberOfSeats;
     }
 
-    public boolean isSummerTires() {
+    public boolean getIsSummerTires() {
         return isSummerTires;
+    }
+    public Key getKey(){
+        return key;
     }
 
     public void setEngineVolume(double engineVolume) {
@@ -90,27 +96,29 @@ public class Car {
     }
 
     public void setTransmission(String transmission) {
-        this.transmission = transmission;
+        this.transmission = validateCarTransmission(transmission);
     }
 
     public void setRegistrationNumber(String registrationNumber) {
-        this.registrationNumber = registrationNumber;
+        this.registrationNumber = validateCarRegistrationNumber(registrationNumber);
     }
 
-    public void setSummerTires(boolean summerTires) {
-        isSummerTires = summerTires;
+    public void setSummerTires(boolean isSummerTires) {
+        this.isSummerTires = isSummerTires;
     }
 
     @Override
     public String toString() {
         return brand + ' ' + model + ", страна сборки - " + productionCountry +
-                ", год выпуска - " + productionYear + ", цвет кузова - " + color +
-                ", объем двигателя - " + engineVolume + " л." +
-                ",\n коробка передач - " + transmission +
-                ", тип кузова - " + bodyType +
-                ", рег. номер - " + registrationNumber +
-                ", количество пассажирских мест - " + numberOfSeats +
-                ", летняя резина - " + isSummerTires;
+                ", год выпуска - " + productionYear +
+                ",\n\t цвет кузова - " + color +
+                ",\n\t объем двигателя - " + engineVolume + " л." +
+                ",\n\t коробка передач - " + transmission +
+                ",\n\t тип кузова - " + bodyType +
+                ",\n\t рег. номер - " + registrationNumber +
+                ",\n\t количество пассажирских мест - " + numberOfSeats +
+                ",\n\t " + ((isSummerTires)? "летняя резина" : "зимняя резина") +
+                ",\n\t " + key;
     }
 
     public static String validateCarParameters(String value){
@@ -119,6 +127,14 @@ public class Car {
     }
     public static String validateCarColor(String value) {
         if (value == null || value.isBlank()) {return "белый";}
+        return value;
+    }
+    public static String validateCarTransmission(String value){
+        if (value == null || value.isBlank()) {return "автомат";}
+        return value;
+    }
+    public static String validateCarBodyType(String value){
+        if (value == null || value.isBlank()) {return "седан";}
         return value;
     }
     public static double validateCarEngineVolume(double value) {
@@ -138,5 +154,31 @@ public class Car {
     public static int validateCarNumberOfSeats(int value) {
         if (value <= 0){return 5;}
         return value;
+    }
+    public static boolean validateBoolean(boolean value){
+        if (value == true || value == false) {return value;}
+        return false;
+    }
+    public void changTires(int month){
+        if (month >= 4 && month <= 10){
+            this.isSummerTires = true;
+            return;
+        }
+        this.isSummerTires = false;
+    }
+    public static class Key{
+        private final boolean remoteEngineStart;
+        private final boolean keylessAccess;
+
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
+            this.remoteEngineStart = validateBoolean(remoteEngineStart);
+            this.keylessAccess = validateBoolean(keylessAccess);
+        }
+
+        @Override
+        public String toString() {
+            return "удаленный запуск двигателя - " + (remoteEngineStart ? "есть" : "нет") +
+                    ", бесключевой доступ - " + (keylessAccess ? "есть" : "нет");
+        }
     }
 }
