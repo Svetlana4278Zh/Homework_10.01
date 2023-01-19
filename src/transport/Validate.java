@@ -36,7 +36,9 @@ public class Validate {
         return value;
     }
     public static double validateMaxSpeed(double value){
-        if (value <= 0){return 120.0;}
+        if (value <= 0){
+            return 120;
+        }
         return value;
     }
 }
