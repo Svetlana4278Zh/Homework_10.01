@@ -18,5 +18,11 @@ public class Main {
         System.out.println(car6);
         car6.changTires(1);
         System.out.println(car6);
+        Bus bus1 = new Bus("Hyundai","Aero Express",2017,"Южная Корея","",110);
+        Bus bus2 = new Bus("Mercedes-Benz","Integro",2020,"Германия","синий",120);
+        Bus bus3 = new Bus("Ikarus","435T",0,"Венгрия","красный",0);
+        System.out.println(bus1);
+        System.out.println(bus2);
+        System.out.println(bus3);
     }
 }
