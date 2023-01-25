@@ -41,4 +41,16 @@ public class Validate {
         }
         return value;
     }
+    public static String validateName(String value){
+        if (value == null || value.isBlank()){
+            return "имя не известно";
+        }
+        return value;
+    }
+    public static int validateExperience(int value){
+        if (value <= 0){
+            return 0;
+        }
+        return value;
+    }
 }

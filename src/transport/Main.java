@@ -1,28 +1,36 @@
 package transport;
 
-import transport.Car;
-
 public class Main {
     public static void main(String[] args) {
-        Car car1 = new Car("Lada", "Granta", 1.7, "желтый", 2015, "Россия","автомат","седан","а123а178",4,true,new Car.Key(true,false));
-        Car car2 = new Car("Audi", "A8 50 L TDI quattro", 3.0, "черный", 2020, "Германия","автомат","седан","в118вк777",5,true,new Car.Key(true,true));
-        Car car3 = new Car("BMW", "Z8", 3.0, "черный", 2021, "Германия","","","ц545ен123",5,true,new Car.Key(true,true));
-        Car car4 = new Car("Kia", "Sportage 4-го поколения", 2.4, "красный", 2018, "Южная Корея","","","",0,false,new Car.Key(true,true));
-        Car car5 = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея","","","в147от154",0,false,new Car.Key(true,true));
-        Car car6 = new Car(null,"",0,null,0,"   ","","","",0,true,new Car.Key(false,false));
+        DriverB driver1 = new DriverB("Иванов Иван Иванович", true,3);
+        DriverC driver2 = new DriverC("Сергеев Сергей Сергеевич",true,5);
+        DriverD driver3 = new DriverD("Петров Петр Петрович",true,6);
+        PassengerCars car1 = new PassengerCars("Lada","Granta",1.7,driver1);
+        PassengerCars car2 = new PassengerCars("Audi","A8 50 L TDI quattro",3.0,driver1);
+        PassengerCars car3 = new PassengerCars("BMW","Z8",3.0,driver1);
+        PassengerCars car4 = new PassengerCars("Kia","Sportage",2.4,driver1);
+        Trucks truck1 = new Trucks("Mercedes-Benz","Actros",7.7,driver2);
+        Trucks truck2 = new Trucks("Mercedes-Benz","Atego",5.1,driver2);
+        Trucks truck3 = new Trucks("Nissan","Cabstar",3.0,driver2);
+        Trucks truck4 = new Trucks("Ford","Cargo",7.3,driver2);
+        Buses bus1 = new Buses("Hyundai","Aero Express",12.9,driver3);
+        Buses bus2 = new Buses("Mercedes-Benz","Integro",12.0,driver3);
+        Buses bus3 = new Buses("Ikarus","435T",10.3,driver3);
+        Buses bus4 = new Buses("Mercedes-Benz","Tourismo",11.9,driver3);
         System.out.println(car1);
         System.out.println(car2);
         System.out.println(car3);
         System.out.println(car4);
-        System.out.println(car5);
-        System.out.println(car6);
-        car6.changTires(1);
-        System.out.println(car6);
-        Bus bus1 = new Bus("Hyundai","Aero Express",2017,"Южная Корея","",110);
-        Bus bus2 = new Bus("Mercedes-Benz","Integro",2020,"Германия","синий",120);
-        Bus bus3 = new Bus("Ikarus","435T",0,"Венгрия","красный",0);
+        System.out.println(truck1);
+        System.out.println(truck2);
+        System.out.println(truck3);
+        System.out.println(truck4);
         System.out.println(bus1);
         System.out.println(bus2);
         System.out.println(bus3);
+        System.out.println(bus4);
+        car1.printnfo();
+        truck2.printnfo();
+        bus3.printnfo();
     }
 }

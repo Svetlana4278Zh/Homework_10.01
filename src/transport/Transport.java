@@ -1,21 +1,16 @@
 package transport;
 import static transport.Validate.*;
 
-public class Transport {
-    private final String brand;
-    private final String model;
-    private final int productionYear;
-    private final String productionCountry;
-    private String color;
-    private double maxSpeed;
+public abstract class Transport {
 
-    public Transport(String brand, String model, int productionYear, String productionCountry, String color, double maxSpeed) {
+    private String brand;
+    private String model;
+    private double engineVolume;
+
+    public Transport(String brand, String model, double engineVolume) {
         this.brand = validateCarParameters(brand);
         this.model = validateCarParameters(model);
-        this.productionYear = validateCarProductionYear(productionYear);
-        this.productionCountry = validateCarParameters(productionCountry);
-        this.color = validateCarColor(color);
-        this.maxSpeed = validateMaxSpeed(maxSpeed);
+        this.engineVolume = validateCarEngineVolume(engineVolume);
     }
 
     public String getBrand() {
@@ -26,27 +21,18 @@ public class Transport {
         return model;
     }
 
-    public int getProductionYear() {
-        return productionYear;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public String getProductionCountry() {
-        return productionCountry;
+    @Override
+    public String toString() {
+        return brand + " " + model + ", объем двигателя: " + engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
+    public abstract void startMoving();
 
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
+    public abstract void finishMoving();
+    public abstract void printnfo();
 
-    public void setColor(String color) {
-        this.color = validateCarColor(color);
-    }
-
-    public void setMaxSpeed(double maxSpeed) {
-        this.maxSpeed = validateMaxSpeed(maxSpeed);
-    }
 }
