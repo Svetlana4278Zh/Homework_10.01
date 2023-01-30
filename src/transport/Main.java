@@ -44,5 +44,8 @@ public class Main {
         bus3.printType();
         bus3.setCapacityType(CapacityType.LARGE);
         bus3.printType();
+        car1.passDiagnostics();
+        truck2.passDiagnostics();
+        bus3.passDiagnostics();
     }
 }

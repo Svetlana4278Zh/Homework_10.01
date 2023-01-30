@@ -61,4 +61,9 @@ public class PassengerCars extends Transport implements Competing {
         }
         System.out.println(bodyType);
     }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Диагностика автомобиля " + getBrand() + " " + getModel() + " пройдена");
+    }
 }

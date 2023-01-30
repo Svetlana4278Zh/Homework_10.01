@@ -62,4 +62,13 @@ public class Buses extends Transport implements Competing{
         }
         System.out.println(capacityType);
     }
+
+    @Override
+    public void passDiagnostics(){
+        try {
+            throw new TransportTypeException("Автобусы диагностику проходить не должны");
+        } catch (TransportTypeException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }
