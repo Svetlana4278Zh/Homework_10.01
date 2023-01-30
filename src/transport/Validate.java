@@ -53,4 +53,7 @@ public class Validate {
         }
         return value;
     }
+    public static boolean isNull(Object value){
+        return value == null;
+    }
 }

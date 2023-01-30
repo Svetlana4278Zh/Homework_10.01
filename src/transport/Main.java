@@ -32,5 +32,17 @@ public class Main {
         car1.printnfo();
         truck2.printnfo();
         bus3.printnfo();
+        System.out.println("\n" + car1);
+        car1.printType();
+        car1.setBodyType(BodyType.SEDAN);
+        car1.printType();
+        System.out.println("\n" + truck2);
+        truck2.printType();
+        truck2.setLoadСapacityType(LoadСapacityType.N2);
+        truck2.printType();
+        System.out.println("\n" + bus3);
+        bus3.printType();
+        bus3.setCapacityType(CapacityType.LARGE);
+        bus3.printType();
     }
 }

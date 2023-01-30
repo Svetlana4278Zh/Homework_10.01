@@ -1,7 +1,10 @@
 package transport;
 
+import static transport.Validate.isNull;
+
 public class Buses extends Transport implements Competing{
     private DriverD driver;
+    private CapacityType capacityType;
     public Buses(String brand, String model, double engineVolume,DriverD driver) {
         super(brand, model, engineVolume);
         this.driver = driver;
@@ -9,6 +12,14 @@ public class Buses extends Transport implements Competing{
 
     public DriverD getDriver() {
         return driver;
+    }
+
+    public CapacityType getCapacityType() {
+        return capacityType;
+    }
+
+    public void setCapacityType(CapacityType capacityType) {
+        this.capacityType = capacityType;
     }
 
     @Override
@@ -41,5 +52,14 @@ public class Buses extends Transport implements Competing{
         System.out.println("Водитель " + getDriver() +
                 " управляет автобусом " + getBrand() + " " + getModel() +
                 " и будет участвовать в заезде");
+    }
+
+    @Override
+    public void printType() {
+        if (isNull(capacityType)){
+            System.out.println("Данных по транспортному средству недостаточно");
+            return;
+        }
+        System.out.println(capacityType);
     }
 }
