@@ -61,4 +61,9 @@ public class Trucks extends Transport implements Competing{
         }
         System.out.println(loadСapacityType);
     }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Диагностика грузовика " + getBrand() + " " + getModel() + " пройдена");
+    }
 }

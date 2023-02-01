@@ -35,5 +35,6 @@ public abstract class Transport {
     public abstract void finishMoving();
     public abstract void printnfo();
     public abstract void printType();
+    public abstract void passDiagnostics();
 
 }
