@@ -1,4 +1,6 @@
 package transport;
+import java.util.*;
+
 import static transport.Validate.*;
 
 public abstract class Transport {
@@ -6,11 +8,13 @@ public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
+    private List<Mechanic> mechanics = new ArrayList<>();
 
-    public Transport(String brand, String model, double engineVolume) {
+    public Transport(String brand, String model, double engineVolume,List<Mechanic> mechanics) {
         this.brand = validateCarParameters(brand);
         this.model = validateCarParameters(model);
         this.engineVolume = validateCarEngineVolume(engineVolume);
+        this.mechanics = mechanics;
     }
 
     public String getBrand() {
@@ -25,16 +29,37 @@ public abstract class Transport {
         return engineVolume;
     }
 
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    public void setMechanics(List<Mechanic> mechanics) {
+        this.mechanics = mechanics;
+    }
+
     @Override
     public String toString() {
-        return brand + " " + model + ", объем двигателя: " + engineVolume;
+        return BrandAndModel() + ", объем двигателя: " + engineVolume;
+    }
+    public void printListOfMechanics(){
+        System.out.println("Список механиков для " + BrandAndModel() + ":");
+        for(Mechanic mechanic : mechanics){
+            System.out.println(mechanic);
+        }
+    }
+    public String BrandAndModel(){
+        return brand + " " + model;
     }
 
     public abstract void startMoving();
-
     public abstract void finishMoving();
     public abstract void printnfo();
     public abstract void printType();
-    public abstract void passDiagnostics();
-
+    public abstract void passDiagnostics() throws TransportTypeException;
+    public boolean checkTransportNeedService(){
+        if (getClass() == Buses.class){
+            return false;
+        }
+        return true;
+    }
 }
