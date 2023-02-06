@@ -1,13 +1,16 @@
 package transport;
 
+import java.util.List;
+
 import static transport.Validate.isNull;
 
 public class Buses extends Transport implements Competing{
     private DriverD driver;
     private CapacityType capacityType;
-    public Buses(String brand, String model, double engineVolume,DriverD driver) {
-        super(brand, model, engineVolume);
+    public Buses(String brand, String model, double engineVolume, List<Mechanic> mechanics, DriverD driver, CapacityType capacityType) {
+        super(brand, model, engineVolume,mechanics);
         this.driver = driver;
+        this.capacityType = capacityType;
     }
 
     public DriverD getDriver() {
@@ -23,34 +26,39 @@ public class Buses extends Transport implements Competing{
     }
 
     @Override
+    public String toString() {
+        return super.toString() + ", " + capacityType;
+    }
+
+    @Override
     public void startMoving() {
-        System.out.println("Автобус " + getBrand() + " " + getModel() + " поехал");
+        System.out.println("Автобус " + BrandAndModel() + " поехал");
     }
 
     @Override
     public void finishMoving() {
-        System.out.println("Автобус " + getBrand() + " " + getModel() + " остановился");
+        System.out.println("Автобус " + BrandAndModel() + " остановился");
     }
 
     @Override
     public void getPitStop() {
-        System.out.println("Автобус " + getBrand() + " " + getModel() + " на Пит-стопе");
+        System.out.println("Автобус " + BrandAndModel() + " на Пит-стопе");
     }
 
     @Override
     public void getBestLapTime() {
-        System.out.println("Лучшее время круга для автобуса " + getBrand() + " " + getModel());
+        System.out.println("Лучшее время круга для автобуса " + BrandAndModel());
     }
 
     @Override
     public void getMaxSpeed() {
-        System.out.println("Максимальная скорость автобуса " + getBrand() + " " + getModel());
+        System.out.println("Максимальная скорость автобуса " + BrandAndModel());
     }
 
     @Override
     public void printnfo(){
         System.out.println("Водитель " + getDriver() +
-                " управляет автобусом " + getBrand() + " " + getModel() +
+                " управляет автобусом " + BrandAndModel() +
                 " и будет участвовать в заезде");
     }
 
