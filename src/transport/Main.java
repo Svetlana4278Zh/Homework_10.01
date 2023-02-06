@@ -73,5 +73,13 @@ public class Main {
         serviceStation.addCarToQueue(raceCars.get(6));
         serviceStation.carryOutTechnicalInspection();
         raceCars.get(10).getMechanics().get(0).fixCar(raceCars.get(10));
+        System.out.println();
+        Map<Transport,List<Mechanic>> carAndMechanic = new HashMap<>();
+        for (Transport car : raceCars){
+            carAndMechanic.put(car,car.getMechanics());
+        }
+        for (Map.Entry<Transport,List<Mechanic>> entry : carAndMechanic.entrySet()){
+            System.out.println("List of mechanics for " + entry.getKey().BrandAndModel() + ": " + entry.getValue());
+        }
     }
 }
