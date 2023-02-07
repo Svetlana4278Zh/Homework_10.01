@@ -1,6 +1,7 @@
 package transport;
 
 import java.util.List;
+import java.util.Objects;
 
 import static transport.Validate.isNull;
 
@@ -73,5 +74,19 @@ public class PassengerCars extends Transport implements Competing {
     @Override
     public void passDiagnostics() {
         System.out.println("Диагностика автомобиля " + BrandAndModel() + " пройдена");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PassengerCars that = (PassengerCars) o;
+        return Objects.equals(driver, that.driver) && bodyType == that.bodyType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), driver, bodyType);
     }
 }
