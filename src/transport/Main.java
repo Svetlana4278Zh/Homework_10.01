@@ -81,5 +81,19 @@ public class Main {
         for (Map.Entry<Transport,List<Mechanic>> entry : carAndMechanic.entrySet()){
             System.out.println("List of mechanics for " + entry.getKey().BrandAndModel() + ": " + entry.getValue());
         }
+        System.out.println();
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(driverIvanov);
+        drivers.add(driverPetrov);
+        drivers.add(driverPetrov);
+        drivers.add(driverSergeev);
+        drivers.add(driverSergeev);
+        drivers.add(driverIvanov);
+        drivers.add(driverIvanov);
+        drivers.add(driverPetrov);
+        Iterator<Driver> iteratorDrivers = drivers.iterator();
+        while (iteratorDrivers.hasNext()){
+            System.out.println(iteratorDrivers.next());
+        }
     }
 }
