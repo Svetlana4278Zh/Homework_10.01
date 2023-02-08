@@ -75,7 +75,6 @@ public class Main {
         serviceStation.carryOutTechnicalInspection();
         raceCars.get(10).getMechanics().get(0).fixCar(raceCars.get(10));
         //endregion
-
         System.out.println();
         Set<Driver> drivers = new HashSet<>();
         drivers.add(driverIvanov);
