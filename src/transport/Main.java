@@ -64,7 +64,6 @@ public class Main {
         System.out.println();
         Queue<Transport> queue = new ArrayDeque<Transport>();
         queue.add(raceCars.get(0));
-        //region Service station
         ServiceStation serviceStation = new ServiceStation(queue);
         serviceStation.carryOutTechnicalInspection();
         serviceStation.carryOutTechnicalInspection();
@@ -74,7 +73,6 @@ public class Main {
         serviceStation.addCarToQueue(raceCars.get(6));
         serviceStation.carryOutTechnicalInspection();
         raceCars.get(10).getMechanics().get(0).fixCar(raceCars.get(10));
-        //endregion
         System.out.println();
         Set<Driver> drivers = new HashSet<>();
         drivers.add(driverIvanov);
