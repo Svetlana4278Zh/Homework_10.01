@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 import static transport.Validate.*;
 
 public abstract class Driver {
@@ -46,5 +48,18 @@ public abstract class Driver {
     }
     public void refuelСar(){
         System.out.println(this + " заправляет автомобиль");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return experience == driver.experience && Objects.equals(name, driver.name) && Objects.equals(hasDriverLicense, driver.hasDriverLicense);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, hasDriverLicense, experience);
     }
 }
